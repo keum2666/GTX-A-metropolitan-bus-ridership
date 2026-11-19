@@ -284,7 +284,7 @@ def _capture_footprint(pixels, part, station):
                        '가려진 대응점 제외': original_pair_count-len(pairs)}
 
 
-def make_capture_figure(grid, stations, cities, root):
+def make_capture_figure(grid, stations, cities, root, capture_filenames=None, footprint_fitter=None):
     """중앙 GIS 위치도와 사용자가 제공한 카카오맵 사진 3개를 합성. 파일 저장 없음."""
     from PIL import Image
     from matplotlib.patches import Polygon as MplPolygon
@@ -293,15 +293,16 @@ def make_capture_figure(grid, stations, cities, root):
     projected = grid.to_crs(5179)
     projected_stations = stations.to_crs(5179).set_index('역명')
     photos, footprints, validation = {}, {}, {}
-    filenames = {'운정중앙': '운정중앙 카맵.png', '킨텍스': '킨텍스 카맵.png',
-                 '대곡': '대곡역 카맵.png'}
+    filenames = capture_filenames or {'운정중앙': '운정중앙 카맵.png', '킨텍스': '킨텍스 카맵.png',
+                                    '대곡': '대곡역 카맵.png'}
+    fit_footprint = footprint_fitter or _capture_footprint
     for name in ORDER:
         path = root / filenames[name]
         if not path.is_file():
             raise FileNotFoundError(f'제공된 카카오맵 캡처 파일이 필요합니다: {path}')
         # 원본 전체 픽셀과 카카오 출처·축척을 그대로 사용한다.
         photos[name] = np.asarray(Image.open(path).convert('RGB'))
-        footprint, check = _capture_footprint(photos[name],
+        footprint, check = fit_footprint(photos[name],
             projected[projected.nearest_station.eq(name)], projected_stations.loc[name].geometry)
         footprints[name] = gpd.GeoSeries([footprint], crs=5179).to_crs(3857).iloc[0]
         validation[name] = check

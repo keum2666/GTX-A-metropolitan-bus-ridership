@@ -9,8 +9,8 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / 'references/GTX-A_연구보고서_원고.md'
-TARGET = ROOT / 'references/GTX-A_연구보고서_원고_연계버스회귀제외.md'
+SOURCE = ROOT / 'references/예전1.md'
+TARGET = ROOT / 'references/예전2.md'
 RESULTS = ROOT / 'results/paper/no_feeder_regression'
 
 

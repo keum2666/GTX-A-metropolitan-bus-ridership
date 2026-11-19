@@ -1,0 +1,9 @@
+{
+  "source": "/Users/keumkyounghoon/Desktop/Gachon/3-2/캡스1/기말발표_출근버전.pptx",
+  "slide": "ppt/slides/slide11.xml",
+  "components": "PPT의 지도 원본, 점선 강조 상자, 설명 문구, 자료 표기 제거용 흰색 도형",
+  "annotation": "운정중앙역이 GTX-A 개통 이후\n 서울 접근시간 단축폭이 가장 큼",
+  "source_footer_hidden": true,
+  "generator": "code/03_eda/compose_seoul_access_ppt_figure.py",
+  "sha256": "ce4aa81881c04c925891e6400c2e0ea3be3d6586e26610531555ad59fec2cbba"
+}

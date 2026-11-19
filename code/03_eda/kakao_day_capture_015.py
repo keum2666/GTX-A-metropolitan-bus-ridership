@@ -20,17 +20,33 @@ HIGHLIGHT_THRESHOLD = -40
 HIGHLIGHT_COLOR = '#00E5FF'
 
 
-def load_map_data(root):
+def load_map_data(root, period='day'):
+    if period not in ('day', 'morning'):
+        raise ValueError("period는 'day' 또는 'morning'이어야 합니다.")
     root = Path(root)
     path = root / 'code/03_eda/study_area_015.py'
     spec = importlib.util.spec_from_file_location('_day_capture_data_015', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     grid, stations, _, summary = module.load_data(root)
+    if period == 'morning':
+        path = root / 'code/03_eda/morning_presentation_015.py'
+        spec = importlib.util.spec_from_file_location('_morning_capture_data_015', path)
+        morning = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(morning)
+        data = morning.load_data(root)
+        for column in ['board_2024', 'board_2025', 'change']:
+            grid[column] = grid['셀 ID'].map(data[column])
+        summary = morning.broad_summary(data)
+        assert grid[['board_2024', 'board_2025', 'change']].sum().tolist() == [3098, 2286, -812]
     return grid.to_crs(5179), stations.to_crs(5179), summary
 
 
-def make_payload(grid, stations):
+def make_payload(grid, stations, highlight_threshold=HIGHLIGHT_THRESHOLD, period='day'):
+    if period not in ('day', 'morning'):
+        raise ValueError("period는 'day' 또는 'morning'이어야 합니다.")
+    if highlight_threshold >= 0:
+        raise ValueError('감소 강조 기준은 음수 건수로 지정해 주세요.')
     assert len(grid) == 126 and grid['셀 ID'].is_unique
     np.testing.assert_array_equal(grid.change, grid.board_2025-grid.board_2024)
     assert grid.crs.to_epsg() == 5179
@@ -58,12 +74,12 @@ def make_payload(grid, stations):
             features.append({'id':int(row['셀 ID']), 'paths':paths,
                              'before':int(row.board_2024),'after':int(row.board_2025),
                              'change':int(row.change),'color':COLORS[int(np.sign(row.change))],
-                             'highlight':bool(row.change <= HIGHLIGHT_THRESHOLD)})
+                             'highlight':bool(row.change <= highlight_threshold)})
         p = station_geo.loc[name].geometry
         payload[name] = {'station':name,'point':[p.y,p.x], 'bounds':bounds,
                          'features':features, 'count':len(features),
                          'highlightCount':sum(feature['highlight'] for feature in features),
-                         'highlightThreshold':HIGHLIGHT_THRESHOLD}
+                         'highlightThreshold':int(highlight_threshold), 'period':period}
     assert sum(len(p['features']) for p in payload.values()) == 126
     return payload
 
@@ -119,15 +135,26 @@ window.addEventListener('resize',()=>{if(map){const center=map.getCenter();map.r
 </script>
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=__KEY__&autoload=false" onload="kakao.maps.load(initMap)" onerror="fail('카카오 SDK 연결 실패: JavaScript 키와 카카오 앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인에 '+location.origin+' 이 등록되어 있는지 확인해 주세요.')"></script>
 </body></html>'''
-    return (template.replace('__NAME__',html.escape(item['station']))
+    page = (template.replace('__NAME__',html.escape(item['station']))
             .replace('__COUNT__',str(item['count']))
             .replace('__HIGHLIGHT_COUNT__',str(item['highlightCount']))
             .replace('__HIGHLIGHT_COLOR__',HIGHLIGHT_COLOR)
             .replace('__DATA__',json.dumps(item,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'))
             .replace('__KEY__',quote(key,safe='')))
+    threshold = int(item.get('highlightThreshold', HIGHLIGHT_THRESHOLD))
+    if threshold != -40:
+        page = page.replace('40건 이상 감소', f'{abs(threshold)}건 이상 감소')
+        page = page.replace('−40건', f'−{abs(threshold)}건')
+    if item.get('period', 'day') == 'morning':
+        page = page.replace('하루 전체', '출근시간대')
+        page = page.replace('2025.11.06 − 2024.10.17 · 250 m',
+                            '06:00 이상 10:00 미만 · 2025.11.06 − 2024.10.17 · 250 m')
+        page = page.replace('2024년 \'+cell.before', '2024년 출근 \'+cell.before')
+        page = page.replace('2025년 \'+cell.after', '2025년 출근 \'+cell.after')
+    return page
 
 
-def _start_available_server(backend, grid, coordinates, key):
+def _start_available_server(backend, grid, coordinates, key, view_id=VIEW_ID):
     """다른 커널이 포트를 사용 중이면 다음 포트를 사용하며 프로세스를 종료하지 않는다."""
     original_port = backend.PORT
     candidates = list(dict.fromkeys([original_port, *range(8766, 8796)]))
@@ -135,7 +162,7 @@ def _start_available_server(backend, grid, coordinates, key):
         backend.PORT = port
         try:
             backend.show_kakao_overlay(grid, coordinates, None, key, count_basis=True,
-                                       view_id=VIEW_ID, display_maps=False, classification='direction')
+                                       view_id=view_id, display_maps=False, classification='direction')
         except RuntimeError as exc:
             cause = exc.__cause__
             if isinstance(cause, OSError) and cause.errno == errno.EADDRINUSE:
@@ -150,7 +177,7 @@ def _start_available_server(backend, grid, coordinates, key):
     raise RuntimeError('8766~8795 포트가 모두 사용 중입니다. 기존 지도 커널의 서버 상태를 확인해 주세요.')
 
 
-def show_maps(grid, stations, root, key):
+def show_maps(grid, stations, root, key, period='day', highlight_threshold=HIGHLIGHT_THRESHOLD):
     """기존 지도 서버를 재사용하거나 빈 포트에서 연다. 키·HTML·이미지를 파일에 쓰지 않는다."""
     from IPython.display import HTML, IFrame, display
     if not key.strip(): raise ValueError('카카오 JavaScript 키를 입력해 주세요.')
@@ -162,10 +189,11 @@ def show_maps(grid, stations, root, key):
         sys.modules['kakao_grid_overlay'] = backend
     geographic_stations = stations.to_crs(4326).set_index('역명')
     coordinates = {name:(geographic_stations.loc[name].geometry.y,geographic_stations.loc[name].geometry.x) for name in ORDER}
-    _start_available_server(backend, grid, coordinates, key)
-    payload = make_payload(grid, stations)
-    backend._pages[VIEW_ID] = {name:make_page(item,key) for name,item in payload.items()}
-    urls = {name:f'http://localhost:{backend.PORT}/map?station={quote(name)}&view={VIEW_ID}&v={time.time_ns()}' for name in ORDER}
+    view_id = VIEW_ID if period == 'day' else 'morning_capture_015'
+    _start_available_server(backend, grid, coordinates, key, view_id=view_id)
+    payload = make_payload(grid, stations, highlight_threshold=highlight_threshold, period=period)
+    backend._pages[view_id] = {name:make_page(item,key) for name,item in payload.items()}
+    urls = {name:f'http://localhost:{backend.PORT}/map?station={quote(name)}&view={view_id}&v={time.time_ns()}' for name in ORDER}
     for name,url in urls.items():
         display(HTML(f'<p><b>{name}역 권역</b> · <a href="{html.escape(url)}" target="_blank" rel="noopener">새 탭에서 크게 열기 · 스크린샷</a></p>'))
         display(IFrame(url,width='100%',height=820))

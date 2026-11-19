@@ -1,0 +1,9 @@
+{
+  "source": "기말발표_출근버전.pptx, slide 8의 개념도를 도형·글자로 재작성",
+  "generator": "code/03_eda/plot_boarding_change_example.py",
+  "sha256": "6003fb73073f9641f37fa2e56cb3d555b4355a2b24ecceb162a5b66379d4a1d8",
+  "description": "부호를 살린 변화량 비교 예시. +50/−10, +10/−50. 실제 관측값 아님.",
+  "format": "600 dpi PNG (6000×5160), 글꼴을 윤곽선으로 포함한 벡터 SVG",
+  "font": "KoPubWorld Dotum Bold; 기존 기초통계·도넛·상관관계 그래프와 동일",
+  "edit": "하단 예시 수치 설명 문구 없음. 원고의 기존 이미지 경로에 교체."
+}

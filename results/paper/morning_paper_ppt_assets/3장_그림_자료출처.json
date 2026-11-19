@@ -1,0 +1,80 @@
+{
+  "presentation": "/Users/keumkyounghoon/Desktop/Gachon/3-2/캡스1/기말발표_출근버전.pptx",
+  "time_window": "06:00 <= boarding time < 10:00",
+  "sample_sizes": {
+    "broad_ols": 113,
+    "feeder_ols": 126,
+    "spearman": 126
+  },
+  "figure_sources": {
+    "PPT_광역버스_권역별_출근승차건수.png": "slide 6, image9.png, right panel",
+    "PPT_광역버스_시간대별_승차건수.png": "slide 6, image9.png, left panel",
+    "PPT_연계버스_출근_도넛.png": "Verified AM646, regional488/41/117. Center explicitly labels AM646 and daily1015 separately. Same regional colors and proportions as before.",
+    "PPT_출근_권역별_순위상관.png": "Re-rendered from verified post2025 AM feeder646 and broad AM change counts, all126 grids including88 zeros. Same regional colors, jitter seed42, per-region x limits and common y ticks0/20/40/60/80. Removed significance annotation and footer text at user request.",
+    "PPT_서울역_접근시간_비교.png": "기말발표_출근버전.pptx의 서울 접근시간 지도와 원본 점선 강조 상자·설명 문구를 결합. 하단 자료 표기 제거.",
+    "PPT_새범례_승차변화.png": "slide 7, image12.png",
+    "PPT_새범례_GTX역.png": "slide 7, image13.png",
+    "출근_분석격자_카카오맵.png": "Latest supplied AM presentation slide7 image10.png. Six cyan cell outlines verified: Unjeong2, Kintex4, Daegok0. Only old legend/date/footer area replaced with original deck legend artwork.",
+    "연계버스_시간대별_승차건수.png": "H10a post2025 row counts; 6-9 total646; all hours1015",
+    "출근_연계버스_승차건수_도보20분_지도.png": "Actual 126 grid geometries and H11a post2025 AM boarding counts (646); S1 walk_min<=20 outlines: Unjeong6 Kintex4 Daegok1. Cached OSM rail geometry as gray context. EPSG:3857; ground-distance scale corrected for latitude.",
+    "출근_연계버스_승차건수_도보20분_카카오맵.png": "User-provided Unjeong/Kintex/Daegok feeder Kakao screenshots, unchanged complete source images; same administrative overview/layout code as broad-bus capture figure. Capture extents fitted to actual walk<=20 grids and GTX station markers (max residual<2.5px). Common positive-count quartiles:3,9.5,24.75. Central overview126 grids.",
+    "권역별_GTX역_버스접근_환승여건_현장답사.png": "Three existing field-trip photos reused from the AM presentation, arranged in one row without changing photo content. Unjeong indoor bus transfer center; Kintex roadside stop; Daegok approach road. Field visit10/19.",
+    "출근_연계버스_승차건수_카카오맵.png": "Latest user-provided Unjeong/Kintex/Daegok feeder Kakao captures, full images unchanged. Walking-time outlines and legend removed. Same central administrative overview and126 grids. Capture extents verified against actual grid centers and GTX station stars; all42 matched grid centers retained, maximum residual1.89px. Common positive-count quartiles3/9.5/24.75; legend endpoint labels0 and25+.",
+    "광역버스_출근113_상관행렬_VIF_히트맵.png": "113-cell AM model design; correlation heatmap and r colorbar only. VIF panel removed; correlation values unchanged."
+  },
+  "sha256": {
+    "PPT_출근_권역별_순위상관.png": "3da01c10bb3de53232d0eb2b640c6e06902abeaad01e98091c933651bd27f2a1",
+    "PPT_서울역_접근시간_비교.png": "ce4aa81881c04c925891e6400c2e0ea3be3d6586e26610531555ad59fec2cbba",
+    "PPT_광역버스_시간대별_승차건수.png": "90f6b14cf95fdbeb7b0538e7086d8925120918e20649a551158d130c5413e9ff",
+    "출근_분석격자_카카오맵.png": "6df9741d941bb78c3db13c930edadf48de73b0b67af60b9428f3a11c4485af0c",
+    "분석격자_선정기준_모식도.png": "48c3849616181b069df0ad1e80804d4ca70d826a802147138300f8bd82a50348",
+    "출근_권역별_순위상관.png": "11eaea3af8e1e0f738d24c4d625ffc62f5c79e1e8aaf792d1b5aa9e61186ea24",
+    "PPT_연계버스_출근_도넛.png": "e7e866aa23e212a35a5d57bce07aadb6d0be8380885a55a2dca25acc67cf313e",
+    "광역버스_권역별_출근승차건수.png": "f9481d09cce2cc7bde783c140329c4b43f559b694c702834ee10ff204d45aaf1",
+    "연계버스_시간대별_승차건수.png": "89ebf23b359a4e184aee42d7cfb17cb637ab2ee926907c51e343aa82471aaaca",
+    "PPT_새범례_승차변화.png": "4cba81062cb5fc2cc6d904fb50f84138bdf7784b04d8dd699f99871cf9ccf3be",
+    "PPT_광역버스_권역별_출근승차건수.png": "c5eb8ac0ae66ee1cf9870dc6f36d85c1e4ec801077ad39370d2ad26fd9997899",
+    "연계버스_출근_도넛.png": "e931be092c45f9578f007670672fe1ddcbefca17f282569aa4bbec99c7f1405f",
+    "PPT_새범례_GTX역.png": "56c99a4681df983b45720ea9f206de2c9576242a62ea4b81c12d23f76d644338",
+    "광역버스_시간대별_승차건수.png": "78b65d8c94f0a87b052c425b134a4e81462101419f0b65ba1dfc52a1f45ebdcd",
+    "출근_연계버스_승차건수_도보20분_지도.png": "612c9795728edf620dcd8ee7a16d8b0319520a9aa69d251bc6f8d90987763206",
+    "출근_연계버스_승차건수_도보20분_카카오맵.png": "930915fea4f031c7714fadec1096c0530f143d199b306ae96483819aa7841493",
+    "권역별_GTX역_버스접근_환승여건_현장답사.png": "6a4ee364ea33a2267de67e832527e34e70af311014014a87db4c5e3a7597779f",
+    "출근_연계버스_승차건수_카카오맵.png": "1628eb71846910a8c77ee2202f3e65ba81b7634afc58128c6da7db37e284407a",
+    "광역버스_출근113_상관행렬_VIF_히트맵.png": "1bea1631c554d3be838235ecfc321c14291988a86afb4d8cfc660f99d8122ac3"
+  },
+  "feeder_capture_inputs": {
+    "운정중앙": {
+      "path": "운정중앙 연계버스 카맵.png",
+      "sha256": "c0584658f47b0d6eedfa24f29298bd8deeb026befbe023f4c605b55916b790d2"
+    },
+    "킨텍스": {
+      "path": "킨텍스 연계버스 카맵.png",
+      "sha256": "dd981b2f520c2ffed5f6fd54466b061a25d56a84693e8c0e9077ff2809be1e41"
+    },
+    "대곡": {
+      "path": "대곡 연계버스 카맵.png",
+      "sha256": "01ffd7d66b0f868aa0b332a9b283dc6907607fe5cf5c8fae5d420f7e007de6b5"
+    }
+  },
+  "feeder_capture_validation": {
+    "운정중앙": {
+      "대응_격자": 22,
+      "최대_잔차_px": 0.9419638178197585,
+      "역_별_대조오차_px": 2.2397013407327644,
+      "가려진_대응점_제외": 0
+    },
+    "킨텍스": {
+      "대응_격자": 15,
+      "최대_잔차_px": 1.8801291172549293,
+      "역_별_대조오차_px": 1.313606604996561,
+      "가려진_대응점_제외": 0
+    },
+    "대곡": {
+      "대응_격자": 5,
+      "최대_잔차_px": 0.3249387436909801,
+      "역_별_대조오차_px": 3.5833113729900146,
+      "가려진_대응점_제외": 0
+    }
+  }
+}

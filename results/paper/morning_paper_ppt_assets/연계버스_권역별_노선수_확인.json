@@ -1,0 +1,33 @@
+{
+  "basis": "Same original1015 daily /646 AM records; boarding-grid nearest_station region; distinct rte_id with observed boardings; no records excluded.",
+  "counts": {
+    "am": {
+      "운정중앙": {
+        "routes": 9,
+        "boardings": 488
+      },
+      "킨텍스": {
+        "routes": 9,
+        "boardings": 41
+      },
+      "대곡": {
+        "routes": 5,
+        "boardings": 117
+      }
+    },
+    "day": {
+      "운정중앙": {
+        "routes": 9,
+        "boardings": 672
+      },
+      "킨텍스": {
+        "routes": 12,
+        "boardings": 113
+      },
+      "대곡": {
+        "routes": 6,
+        "boardings": 230
+      }
+    }
+  }
+}

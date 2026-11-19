@@ -1,0 +1,58 @@
+{
+  "source_pptx": "/Users/keumkyounghoon/Desktop/Gachon/3-2/캡스1/기말발표_전체.pptx",
+  "scope": "일일 / 기존126개 격자 / 광역7110→5517 / 연계1015",
+  "assets": {
+    "서울역_접근시간_비교.png": {
+      "source": "기말발표_출근버전.pptx의 서울 접근시간 지도와 원본 점선 강조 상자·설명 문구를 결합. 하단 자료 표기 제거.",
+      "sha256": "ce4aa81881c04c925891e6400c2e0ea3be3d6586e26610531555ad59fec2cbba"
+    },
+    "권역별_현장답사.png": {
+      "source": "Same three field photos and arrangement as AM manuscript; independent of counting period.",
+      "sha256": "6a4ee364ea33a2267de67e832527e34e70af311014014a87db4c5e3a7597779f"
+    },
+    "일일_광역버스_카카오맵.png": {
+      "source": "Daily deck slide6,ppt/media/image7.png. Removed only the two bottom notes beginning 하루 전체 and 중앙 위치도. Exact original pixel dimensions retained; all pixels outside the note area verified identical, including maps and legend.",
+      "sha256": "76e5a7a1d7e3a2109694b83a976596a3ba20b1011e99c68a50ee32ab8512d2c2"
+    },
+    "일일_연계버스_도넛.png": {
+      "source": "Verified daily1015, regional672/113/230. Center label: 일일 승차건수1,015건. Same regional colors and proportions as the source daily deck.",
+      "sha256": "284466a59a3fc5f8b285bbe1b731adc22b30eeb6e73aa0e38c54d3d0fecf3482"
+    },
+    "일일_광역버스_권역별_승차건수.png": {
+      "source": "Daily S1 counts; daily deck slide5 left panel values reproduced with AM manuscript style.",
+      "sha256": "93a764385ad9dd7093bbcf4c560cfd9d211aa4b38523f7baa50341811b88980e"
+    },
+    "일일_광역버스_시간대별.png": {
+      "source": "Existing verified 24-hour aggregate table; no AM filtering; all24 clock-hour groups displayed.",
+      "sha256": "42f310176172c8fcd092cb074ec441291c79ba615148933206c5601228492f2f"
+    },
+    "일일_연계버스_시간대별.png": {
+      "source": "Existing verified 24-hour aggregate table; no AM filtering; all24 clock-hour groups displayed.",
+      "sha256": "290492c0263a82fdc655c98571e4f2c78623245c4c4e5c1c352e3cf7fe772bb3"
+    },
+    "일일126_상관행렬_VIF_히트맵.png": {
+      "source": "126-cell daily model design; correlation heatmap and r colorbar only. VIF panel removed; correlation values unchanged.",
+      "sha256": "1bfb3e03082509e71010e11097e0cd9b690b65ef69a1d5a1622d83f280c1fd62"
+    },
+    "일일_권역별_순위상관.png": {
+      "source": "Daily126, Δbroad and post2025 feeder1015; same region colors and jitter as AM manuscript; no trendline or significance-status annotation.",
+      "sha256": "46e89e720fc0dad181c8651aca884b11d23d7dbc07e646f52b5fd2a6cbf4bd51"
+    },
+    "일일_연계버스_격자지도.png": {
+      "source": "Actual126 GIS grid polygons, daily feeder1015; cached rail context, same overview and station coordinates; common positive quartiles3/11/32.5, no walking-time overlays. Not an AM map.",
+      "sha256": "2366cb4725f9f053dd1b8217791cfe95d91bc87f883d546df2f2bd054cb32f3b"
+    },
+    "분석격자_선정기준_모식도.png": {
+      "source": "Same unchanged grid-selection schematic as the AM manuscript.",
+      "sha256": "48c3849616181b069df0ad1e80804d4ca70d826a802147138300f8bd82a50348"
+    }
+  },
+  "verified_models": {
+    "broad_n": 126,
+    "feeder_n": 126,
+    "spearman_n": 126,
+    "broad_r2": 0.26326501899064747,
+    "feeder_r2": 0.27629089179902
+  },
+  "morning_source_sha256": "1e0d4f11f66503d7ce7e8942e4e03908ee25a3374355d0a3b316db081beee07f"
+}

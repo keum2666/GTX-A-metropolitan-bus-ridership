@@ -1,0 +1,86 @@
+{
+  "source_pptx": "/Users/keumkyounghoon/Desktop/Gachon/3-2/캡스1/기말발표_전체.pptx",
+  "assets": [
+    {
+      "file": "그림02_분석격자_카카오맵.png",
+      "slide": 10,
+      "ppt_member": "ppt/media/image12.png",
+      "bytes": 4426015,
+      "sha256": "f9f4efe5276eebde323f3fe2df5db266e6e85c984daa012aff1894982b72439c"
+    },
+    {
+      "file": "카카오맵_표시.png",
+      "slide": 10,
+      "ppt_member": "ppt/media/image13.png",
+      "bytes": 3562,
+      "sha256": "43112d214b9f39682788ccdda968461359c138a25d507fe3d0ee67e83cbfe57a"
+    },
+    {
+      "file": "그림02_지도범례.png",
+      "slide": 10,
+      "ppt_member": "ppt/media/image14.png",
+      "bytes": 8992,
+      "sha256": "4cba81062cb5fc2cc6d904fb50f84138bdf7784b04d8dd699f99871cf9ccf3be"
+    },
+    {
+      "file": "그림03_운정중앙역_환승센터.jpeg",
+      "slide": 14,
+      "ppt_member": "ppt/media/image20.jpeg",
+      "bytes": 2242884,
+      "sha256": "2ef2b5237e055799c64c5cbe5d9a63de7075645f111551b3ed3b5b668605cfdb"
+    },
+    {
+      "file": "그림04_대곡역_접근도로.jpeg",
+      "slide": 14,
+      "ppt_member": "ppt/media/image21.jpeg",
+      "bytes": 1740001,
+      "sha256": "8fdb3b5cf77afa51b211b7290ca1fffa478f8c8548a7dd7abd1611a7b9ece792"
+    },
+    {
+      "file": "그림05_킨텍스역_정류장.png",
+      "slide": 14,
+      "ppt_member": "ppt/media/image22.png",
+      "bytes": 83304438,
+      "sha256": "ca5fd07c3fcf844956de0aaf52ef39837eb2eda600a10f64bd555f4c95707b62"
+    },
+    {
+      "file": "그림06_권역별_순위상관.png",
+      "slide": 16,
+      "ppt_member": "ppt/media/image24.png",
+      "bytes": 194482,
+      "sha256": "471ae920209094b14b0cbeac18c4705e54f05d47a646085f1587c4133466e260"
+    },
+    {
+      "file": "그림_연계버스_도넛.png",
+      "slide": 13,
+      "ppt_member": "ppt/media/image15.png",
+      "bytes": 156728,
+      "sha256": "260f5b9116f7b5f14870f39fa4f1f6fbbc6eef4effb472eeac5c3336b9fc2037"
+    }
+  ],
+  "display_derivatives": [
+    {
+      "file": "그림04_대곡역_접근도로_표시용.jpg",
+      "source_file": "그림04_대곡역_접근도로.jpeg",
+      "ppt_srcRect_in_100000": {
+        "l": 42938
+      },
+      "rotation_clockwise_degrees": 90,
+      "longest_dimension_px": 2200,
+      "format": "JPEG",
+      "sha256": "cd122d10d144b1ec92accf36c96c9df544d3053099b7ccf7412e0768467e09cd"
+    },
+    {
+      "file": "그림05_킨텍스역_정류장_표시용.jpg",
+      "source_file": "그림05_킨텍스역_정류장.png",
+      "ppt_srcRect_in_100000": {
+        "l": 34559,
+        "r": 6921
+      },
+      "rotation_clockwise_degrees": 90,
+      "longest_dimension_px": 2200,
+      "format": "JPEG",
+      "sha256": "339293ca04da4b022d5e1370073960f50c79fd5fb9a4e2da81dca55dde0d64a4"
+    }
+  ]
+}
